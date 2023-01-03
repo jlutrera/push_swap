@@ -51,9 +51,6 @@ $(LIB_NAME)	:
 .c.o		:	
 				@$(CC) -c $< -o $(<:.c=.o)
 
-test		:	$(NAME1)
-				python3 pyviz.py `ruby -e "puts (1..10).to_a.shuffle.join(' ')"`
-
 clean		:
 				@echo "$(YELLOW)  Deleting object files........$(RESET)\c"
 # The end (\c) works to delete (\n) at the end in the echo command
