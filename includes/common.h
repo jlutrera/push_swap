@@ -47,5 +47,7 @@ int		rotate(t_list **x, t_list **y, int print, char stack);
 int		reverse(t_list **x, t_list **y, int print, char stack);
 int		swap(t_list **x, t_list **y, int print, char stack);
 int		push(t_list **x, t_list **y, int print, char stack);
+int		rr(t_list **x, t_list **y, int print);
+int		rrr(t_list **x, t_list **y, int print);
 
 #endif

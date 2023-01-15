@@ -27,5 +27,8 @@ void	count_followers(t_list **a, int len);
 int		where_is_min(t_list *p);
 bool	its_max_min(t_list *p, int value);
 int		any_where(t_list *p, int value);
+//utils2.c
+void	move_a(t_list **a, t_list **b, int print, int x);
+void	move_b(t_list **a, t_list **b, int print, int y);
 
 #endif

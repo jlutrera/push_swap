@@ -31,7 +31,7 @@ int	bestoption(t_list *b)
 	return (r->index);
 }
 
-void	put_bestoption(t_list **a, t_list **b, int print, int choosed)
+int	put_bestoption(t_list **a, t_list **b, int print, int choosed)
 {
 	t_list	*p;
 	int		i;
@@ -40,22 +40,18 @@ void	put_bestoption(t_list **a, t_list **b, int print, int choosed)
 	p = *b;
 	i = 0;
 	len = ft_lstsize(*b);
-	while (p->index != choosed)
+	while (p && p->index != choosed)
 	{
-		while (p && p->index != choosed)
-		{
-			p = p->next;
-			i++;
-		}	
-		if (len - i < i)
-			reverse(a, b, print, 'b');
-		else
-			rotate(a, b, print, 'b');
-		p = *b;
-	}
+		p = p->next;
+		i++;
+	}	
+	if (len - i < i)
+		return (i - len);
+	else
+		return (i);
 }
 
-void	prepare_push(t_list **a, t_list **b, int print, int choosed)
+int	prepare_push(t_list **a, t_list **b, int print, int choosed)
 {
 	int		j;
 	int		len;
@@ -66,22 +62,33 @@ void	prepare_push(t_list **a, t_list **b, int print, int choosed)
 	else
 		j = any_where(*a, choosed);
 	if (len - j < j)
-	{
-		j = len - j;
-		while (j-- > 0)
-			reverse(a, b, print, 'a');
-	}
+		return (j - len);
 	else
-		while (j-- > 0)
-			rotate(a, b, print, 'a');
-	push(a, b, print, 'a');
+		return (j);
 }
 
 void	manage_stackb(t_list **a, t_list **b, int print)
 {
 	int	choosed;
+	int	x;
+	int	y;
 
 	choosed = bestoption(*b);
-	put_bestoption(a, b, print, choosed);
-	prepare_push(a, b, print, choosed);
+	y = put_bestoption(a, b, print, choosed);
+	x = prepare_push(a, b, print, choosed);
+	while (x > 0 && y > 0)
+	{
+		rr(a, b, print);
+		x--;
+		y--;
+	}
+	while (x < 0 && y < 0)
+	{
+		rrr(a, b, print);
+		y++;
+		x++;
+	}
+	move_a(a, b, print, x);
+	move_b(a, b, print, y);
+	push(a, b, print, 'a');
 }

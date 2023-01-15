@@ -37,9 +37,9 @@ void	get_limits(bool ini, int *limits, int len)
 {
 	int	chunk;
 
-	chunk = 2 * len / 7;
+	chunk = 42;
 	if (len > 200)
-		chunk = len / 6;
+		chunk = 75;
 	if (ini)
 	{
 		limits[0] = 0;

@@ -66,7 +66,7 @@ void	sort_stack(t_list **a, int print)
 	{
 		if (len < 4)
 			sort_three(a, &b, print);
-		else if (len < 20)
+		else if (len < 35)
 			sort_five(a, &b, print, len);
 		else
 			sort_hundreds(a, &b, print, len);
