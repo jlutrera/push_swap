@@ -17,6 +17,8 @@ int	check_order(t_list *a)
 	t_list	*p;
 	t_list	*q;
 
+	if (!a)
+		return (-1);
 	p = a;
 	q = p->next;
 	while (q)
